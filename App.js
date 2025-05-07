@@ -1,55 +1,100 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+  Image,
+  ImageBackground,
+  Button,
+  TouchableOpacity,
+} from "react-native";
+
+import Feather from "@expo/vector-icons/Feather";
 
 export default function App() {
+  const changeText = () => {
+    console.log("foi digitado algo no textInput");
+  };
+
   return (
-    <>
-      <View style={styles.container1}>
-        <Text style={styles.text}>AMO MINHA MULHER!!💜💜💜💜💜💜</Text>
-        <StatusBar style="auto" />
-      </View>
+    <ImageBackground
+      style={styles.container}
+      source={require("./src/assets/images/be7473c8c0465c7fc7662fbefee519c4.jpg")}
+      resizeMode="cover"
+    >
+      <Feather name="user" size={24} color="black" />
 
-      <View style={styles.container2}>
-        <Text style={styles.text}>AMO MINHA MULHER!!💙💙💙💙💙💙</Text>
-        <StatusBar style="auto" />
-      </View>
+      <TextInput
+        style={styles.input}
+        placeholder="Digite seu Email"
+        secureTextEntry={true}
+        placeholderTextColor="#00FFFF"
+        inputMode={"text"}
+        autoCapitalize="characters"
+        multiline={true}
+        onChangeText={changeText}
+      />
 
-      <View style={styles.container3}>
-        <Text style={styles.text}>AMO MINHA MULHER!!💙💙💙💙💙💙</Text>
-        <StatusBar style="auto" />
-      </View>
-    </>
+      <TextInput
+        style={styles.input}
+        placeholder="Digite sua Senha!"
+        secureTextEntry={true}
+        placeholderTextColor="#00FFFF"
+        inputMode={"numeric"}
+        autoCapitalize="characters"
+        multiline={true}
+        onChangeText={changeText}
+      />
+
+      {/*<Button
+        title="Enviar"
+        color="#ff0000"
+        onPress={() => alert("você apertou o botão")}
+      />
+      */}
+
+      <TouchableOpacity
+        style={styles.btn}
+        onPress={() => alert("Login feito com sucesso!")}
+      >
+        <Text style={styles.text}>Login</Text>
+      </TouchableOpacity>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
-  container1: {
+  container: {
     flex: 1,
-    backgroundColor: "bisque",
     alignItems: "center",
     justifyContent: "center",
   },
-
-  container2: {
-    flex: 1,
-    backgroundColor: "pink",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-
-  container3: {
-    flex: 1,
-    backgroundColor: "whir",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-
   text: {
-    color: "purple",
-    fontSize: 50,
-    textShadowColor: "orange",
-    textShadowOffset: { width: 2, height: 2 },
-    textShadowRadius: 5,
-    fontWeight: "bold",
+    fontSize: 10,
+    color: "#00FFFF",
+  },
+  input: {
+    width: 300,
+    padding: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: "#00FFFF",
+    color: "#00FFFF",
+  },
+  image: {
+    width: 150,
+    height: 150,
+  },
+  btn: {
+    width: 100,
+    padding: 10,
+    backgroundColor: "transparent",
+    color: "#000",
+    alignItems: "center",
+    marginTop: 10,
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: "#00FFFF",
+    color: "#00FFFF",
   },
 });
